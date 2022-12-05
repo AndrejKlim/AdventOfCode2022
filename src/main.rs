@@ -1,3 +1,5 @@
+extern crate core;
+
 use std::fs;
 use crate::days::day5::get_top_items;
 

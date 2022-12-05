@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-use std::num::ParseIntError;
 use crate::file_data;
 
 pub fn get_top_items() {
@@ -38,11 +36,15 @@ pub fn get_top_items() {
             }
         }
 
-        let mut temp_vec: Vec<&str> = vec![];
 
-        for i in 0..command[0] {
-            let from = crates.get_mut(command[1] - 1).unwrap();
-            &temp_vec.push(from.pop().unwrap());
+        let from = crates.get_mut(command[1] - 1).unwrap();
+
+        let temp_vec = from.as_slice()[from.len()-command[0]..].to_vec();
+
+        println!("{:?}", temp_vec);
+
+        for _i in 0..command[0] {
+            from.pop();
         }
 
         for item in temp_vec {
